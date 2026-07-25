@@ -54,5 +54,6 @@ export default function RootLayout() {
         }}
       />
     </Tabs>
+    
   );
 }

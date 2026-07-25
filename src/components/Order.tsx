@@ -7,12 +7,13 @@ interface OrderProps {
   customer: string;
   status: string;
   total: number;
-  items: string[];
+  items?: string[];
   createdAt: string;
 }
 
 export default function Order(props: OrderProps) {
   const router = useRouter();
+  const items = props.items ?? [];
 
   const handlePress = () => {
     router.push({
@@ -22,7 +23,7 @@ export default function Order(props: OrderProps) {
         customer: props.customer,
         status: props.status,
         total: String(props.total),
-        items: props.items.join(','),
+        items: items.join(','),
         createdAt: props.createdAt,
       },
     });
@@ -35,7 +36,7 @@ export default function Order(props: OrderProps) {
         <Text style={styles.customer}>{props.customer}</Text>
         <Text style={styles.date}>Order Date: {props.createdAt}</Text>
         <Text style={styles.items}>
-          {props.items.length} Products  - ${props.total.toFixed(2)}
+          {items.length} Products  - ${props.total}
         </Text>
       </View>
 

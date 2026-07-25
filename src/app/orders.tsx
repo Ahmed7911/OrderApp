@@ -16,7 +16,7 @@ type OrderItem = {
   customer: string;
   status: string;
   total: number;
-  items: string[];
+  items?: string[];
   createdAt: string;
 };
 
@@ -63,8 +63,7 @@ export default function OrdersScreen() {
 
     return orders.filter((order) => {
       const matchesStatus = selectedStatus === 'all' || order.status.toLowerCase() === selectedStatus;
-      const searchableText = `${order.customer} ${order.id} ${order.status} ${order.items.join(' ')}`.toLowerCase();
-      const matchesQuery = query.length === 0 || searchableText.includes(query);
+const searchableText = `${order.customer} ${order.id} ${order.status} ${(order.items ?? []).join(', ')}`.toLowerCase();      const matchesQuery = query.length === 0 || searchableText.includes(query);
 
       return matchesStatus && matchesQuery;
     });
@@ -121,7 +120,7 @@ export default function OrdersScreen() {
               customer={item.customer}
               status={item.status}
               total={item.total}
-              items={item.items}
+              items={item.items ?? []}
               createdAt={item.createdAt}
             />
           )}

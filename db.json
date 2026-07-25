@@ -1,15 +1,8 @@
 {
   "orders": [
     {
-      "id": "1",
-      "customer": "Ahmed Ali",
-      "status": "pending",
-      "total": 250,
-      "items": [
-        "Product A",
-        "Product B"
-      ],
-      "createdAt": "2025-07-20T10:00:00Z"
+      "status": "cancelled",
+      "id": "1"
     },
     {
       "id": "2",
@@ -84,6 +77,26 @@
       "name": "Keyboard",
       "price": 600,
       "image": "https://picsum.photos/id/201/600/600"
+    }
+  ],
+  "customers": [
+    {
+      "id": "1",
+      "name": "Sara Mohammed Ali",
+      "email": "sara2@example.com",
+      "phone": "0123456789",
+      "address": "123 Main Street, Alexandria, Egypt",
+      "city": "Alexandria",
+      "photo": "https://picsum.photos/id/0/600/600"
+    },
+    {
+      "id": "3",
+      "name": "Ahmed Ali",
+      "email": "ahmed@example.com",
+      "phone": "0123456789",
+      "address": "123 Main Street, Alexandria, Egypt",
+      "city": "Alexandria",
+      "photo": "https://picsum.photos/id/48/600/600"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

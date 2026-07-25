@@ -1,39 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Pressable, Image, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
-export default function CustomerProfile() {
-  const navigation = useNavigation();
-  const [customer, setCustomer] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    photo: '',
+// import { useNavigation } from '@react-navigation/native';
+
+interface CustomerProfileProps {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  photo: string;
+}
+export default function CustomerProfile(props: CustomerProfileProps) {
+  // const navigation = useNavigation();
+  const [customer, setCustomer] = useState<CustomerProfileProps>({
+    id: props.id || '',
+    name: props.name || '',
+    email: props.email || '',
+    phone: props.phone || '',
+    address: props.address || '',
+    city: props.city || '',
+    photo: props.photo || '',
   });
 
   useEffect(() => {
+    const hasProfileData = Boolean(
+      props.name || props.email || props.phone || props.address || props.city || props.photo
+    );
+
+    if (hasProfileData) {
+      setCustomer({
+        id: props.id || '',
+        name: props.name || '',
+        email: props.email || '',
+        phone: props.phone || '',
+        address: props.address || '',
+        city: props.city || '',
+        photo: props.photo || '',
+      });
+      return;
+    }
+
     const fetchCustomer = async () => {
-      const customer = await AsyncStorage.getItem('user');
-      if (customer) {
-        setCustomer(JSON.parse(customer));
+      const savedCustomer = await AsyncStorage.getItem('user');
+      if (savedCustomer) {
+        setCustomer(JSON.parse(savedCustomer));
       }
     };
     fetchCustomer();
-  }, []);
+  }, [props.name, props.email, props.phone, props.address, props.city, props.photo]);
 
-  const handleChange = (name: string, value: string) => {
-    setCustomer({ ...customer, [name]: value });
-  };
-
-  
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <View>
         <View style={styles.profileContainer}>
           <Image
-            source={require('../assets/profile.png')}
+            source={{ uri: customer.photo }}
             style={styles.profileImage}
           />
           <View style={styles.profileDetails}>
@@ -43,11 +66,8 @@ export default function CustomerProfile() {
             <Text style={styles.profileAddress}>{customer.address}</Text>
           </View>
         </View>
-        <View style={styles.buttonContainer}>
-          
-            
-        </View>
-      </ScrollView>
+        <View style={styles.buttonContainer} />
+      </View>
     </View>
   );
 }
