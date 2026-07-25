@@ -1,0 +1,90 @@
+{
+  "orders": [
+    {
+      "id": "1",
+      "customer": "Ahmed Ali",
+      "status": "pending",
+      "total": 250,
+      "items": [
+        "Product A",
+        "Product B"
+      ],
+      "createdAt": "2025-07-20T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "customer": "Sara Mohammed",
+      "status": "completed",
+      "total": 450,
+      "items": [
+        "Product C"
+      ],
+      "createdAt": "2025-07-21T09:00:00Z"
+    },
+    {
+      "id": "3",
+      "customer": "Khalid Hassan",
+      "status": "cancelled",
+      "total": 120,
+      "items": [
+        "Product D",
+        "Product E"
+      ],
+      "createdAt": "2025-07-22T14:00:00Z"
+    },
+    {
+      "id": "4",
+      "customer": "Ahmed Ali",
+      "status": "waiting",
+      "total": 250,
+      "items": [
+        "Product A",
+        "Product B"
+      ],
+      "createdAt": "2025-07-20T10:00:00Z"
+    },
+    {
+      "status": "cancelled",
+      "id": "5"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Laptop",
+      "price": 100,
+      "image": "https://picsum.photos/id/0/600/600"
+    },
+    {
+      "id": "2",
+      "name": "Smartphone",
+      "price": 200,
+      "image": "https://picsum.photos/id/20/600/600"
+    },
+    {
+      "id": "3",
+      "name": "Headphones",
+      "price": 300,
+      "image": "https://picsum.photos/id/48/600/600"
+    },
+    {
+      "id": "4",
+      "name": "Smartwatch",
+      "price": 400,
+      "image": "https://picsum.photos/id/96/600/600"
+    },
+    {
+      "id": "5",
+      "name": "Camera",
+      "price": 500,
+      "image": "https://picsum.photos/id/180/600/600"
+    },
+    {
+      "id": "6",
+      "name": "Keyboard",
+      "price": 600,
+      "image": "https://picsum.photos/id/201/600/600"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
